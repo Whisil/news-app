@@ -1,1 +1,1 @@
-# A test-task for React developer position
+# A news api test-app

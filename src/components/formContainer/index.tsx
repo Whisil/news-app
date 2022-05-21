@@ -1,32 +1,30 @@
+import { useEffect } from "react";
+import { useState } from "react";
 import LoginForm from "../loginForm"
 import LoginSide from "../loginSide"
 
 const FormContainer = () => {
+
+  const [registerForm, setRegisterForm] = useState(false);
+
     return (
       <>
         <div className="mx-auto xl:container xl:flex xl:items-center xl:h-screen">
           <div className="mobile-md:max-w-[375px] w-full md:max-w-[476px] px-7 mobile-xl:mx-auto mobile-xl:mt-100">
             <h2 className="text-black text-lg leading-normal font-medium mb-22">
-              Sign in
+              Sign {registerForm ? 'up' : 'in'}
             </h2>
             <p className="text-base leading-normal text-black font-normal">
-              If you don’t have an account registered <br />
+              {registerForm ? 'If you already have an account' : 'If you don’t have an account registered'}
+              <br />
               You can{" "}
-              <span className="text-blue font-semibold">
-                Register NOWHERE !
+              <span className="text-blue font-semibold cursor-pointer hover:opacity-75 transition-opacity duration-300" onClick={() => setRegisterForm(!registerForm)}>
+                {!registerForm ? 'Register' : 'Login'} here !
               </span>
             </p>
 
-            <LoginForm />
+            <LoginForm registerForm={registerForm}/>
 
-            <span className="inline-block w-full text-center mt-42 mb-6 text-base font-medium text-gray-100">
-              or continue with
-            </span>
-
-            <div className="flex items-center justify-center gap-4 w-full">
-              <img src="images/facebook-login.svg" />
-              <img src="images/google-login.svg" />
-            </div>
           </div>
         </div>
 

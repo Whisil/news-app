@@ -1,7 +1,9 @@
-import FormContainer from "../../components/formContainer"
-import Header from "../../components/header"
+import FormContainer from "../../components/formContainer";
+import Header from "../../components/header";
+
 
 const Login = () => {
+
     return(
         <>
             <Header secondary/>

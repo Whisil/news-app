@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import Header from '../../components/header';
 import NewsCard from '../../components/newsCard';
 
 interface ItemProps {
@@ -40,30 +41,32 @@ const News = () => {
     }
 
     return(
-        <div className="container mx-auto py-20 mobile-md:px-4 ">
-            <div className="flex justify-center gap-5 xl:gap-14 flex-wrap">
-                {news.map(({title, author, url, urlToImage}:ItemProps, i:number) => (
-                    <NewsCard 
-                    key={i}
-                    title={title} 
-                    url={url}
-                    author={author}
-                    img={urlToImage}
-                    />
-                ))}
-                
-            </div>
+        <>
+            <Header />
+            <div className="container mx-auto py-20 mobile-md:px-4 ">
+                <div className="flex justify-center gap-5 xl:gap-14 flex-wrap">
+                    {news.map(({title, author, url, urlToImage}:ItemProps, i:number) => (
+                        <NewsCard 
+                        key={i}
+                        title={title} 
+                        url={url}
+                        author={author}
+                        img={urlToImage}
+                        />
+                    ))}
+                    
+                </div>
 
-            {news.length !== 0 &&
-                <button 
-                    className="block mx-auto mt-10 px-4 py-2 bg-blue text-white font-medium rounded-32 hover:scale-105 transition-scale duration-300 shadow-2md" 
-                    onClick={handleShowMore}
-                >
-                    Show more
-                </button>
-            }
-        </div>
-        
+                {news.length !== 0 &&
+                    <button 
+                        className="block mx-auto mt-10 px-4 py-2 bg-blue text-white font-medium rounded-32 hover:scale-105 transition-scale duration-300 shadow-2md" 
+                        onClick={handleShowMore}
+                    >
+                        Show more
+                    </button>
+                }
+            </div>
+        </>
     )
 }
 

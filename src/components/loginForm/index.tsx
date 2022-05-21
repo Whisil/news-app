@@ -1,5 +1,5 @@
 import LoginInput from "../loginInput"
-import { login, signup, useAuth } from '../../firebase';
+import { login, signup, loginFacebook, useAuth, loginGoogle } from '../../firebase';
 import { useSelector } from "react-redux";
 import { RootState } from '../../app/store';
 import { useEffect, useState } from "react";
@@ -25,6 +25,22 @@ const LoginForm = ({registerForm}:LoginFormProps) => {
             await login(email, password)
         } catch {
             alert("Either you're already logged in or email or password is wrong");
+        }
+    }
+
+    async function handleFacebookLogin() {
+        try{
+            await loginFacebook();
+        } catch{
+            alert("Facebook is buggin..");
+        }
+    }
+
+    async function handleGoogleLogin() {
+        try{
+            await loginGoogle();
+        } catch {
+            alert("Google is buggin");
         }
     }
 
@@ -69,8 +85,8 @@ const LoginForm = ({registerForm}:LoginFormProps) => {
                     </span>
 
                     <div className="flex items-center justify-center gap-4 w-full">
-                        <img src="images/facebook-login.svg" />
-                        <img src="images/google-login.svg" />
+                        <img onClick={handleFacebookLogin} src="images/facebook-login.svg" className="cursor-pointer hover:scale-105 transition-scale duration-300" />
+                        <img onClick={handleGoogleLogin} src="images/google-login.svg" className="cursor-pointer hover:scale-105 transition-scale duration-300" />
                     </div> 
                 </>
             }

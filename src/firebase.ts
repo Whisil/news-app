@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, FacebookAuthProvider, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useSelector, useDispatch } from "react-redux";
 import { setCurrentUser } from './slices/loginSlice';
 import { RootState } from './app/store';
@@ -16,6 +16,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
+const facebookProvider = new FacebookAuthProvider();
+const googleProvide = new GoogleAuthProvider();
+
 
 export function signup(email:string, password:string){
     return createUserWithEmailAndPassword(auth, email, password);
@@ -23,6 +26,14 @@ export function signup(email:string, password:string){
 
 export function login(email:string, password:string){
     return signInWithEmailAndPassword(auth, email, password);
+}
+
+export async function loginFacebook(){
+    return await signInWithPopup(auth, facebookProvider).then((result) => console.log(result.user));
+}
+
+export async function loginGoogle(){
+    return await signInWithPopup(auth, googleProvide).then((result) => console.log(result.user));
 }
 
 

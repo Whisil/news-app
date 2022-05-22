@@ -16,7 +16,7 @@ const Profile = () => {
         if(currentUser.email === undefined){
             navigate('/login', {replace: true});
         }
-        console.log(currentUserData)
+
     }, [])
 
     return(

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useState } from "react";
 import LoginForm from "../loginForm"
 import LoginSide from "../loginSide"

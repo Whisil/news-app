@@ -29,11 +29,11 @@ export function login(email:string, password:string){
 }
 
 export async function loginFacebook(){
-    return await signInWithPopup(auth, facebookProvider).then((result) => console.log(result.user));
+    return await signInWithPopup(auth, facebookProvider);
 }
 
 export async function loginGoogle(){
-    return await signInWithPopup(auth, googleProvide).then((result) => console.log(result.user));
+    return await signInWithPopup(auth, googleProvide);
 }
 
 
@@ -43,10 +43,9 @@ export function useAuth(){
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const unsub = onAuthStateChanged(auth, user => dispatch(setCurrentUser(user?.email)));
+        const unsub = onAuthStateChanged(auth, user => dispatch(setCurrentUser({email: user?.email, name: user?.displayName, photo: user?.photoURL} || '')));
 
         return unsub;
     }, [])
-
     return currentUser;
 }

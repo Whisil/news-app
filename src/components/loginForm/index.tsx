@@ -60,7 +60,7 @@ const LoginForm = ({registerForm}:LoginFormProps) => {
     }
 
     useEffect(() => {
-        if(currentUser){
+        if(currentUser.email !== undefined){
             navigate('/profile', {replace: true});
         }
     }, [currentUser])

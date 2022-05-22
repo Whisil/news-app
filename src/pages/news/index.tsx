@@ -20,7 +20,7 @@ const News = () => {
       if(loadRef.current === false){
         loadRef.current = true;
 
-        // getAllNews(page);
+        getAllNews(page);
       }
     }, [page])
 
@@ -42,7 +42,7 @@ const News = () => {
 
     return(
         <>
-            <Header />
+            <Header profileBtn />
             <div className="container mx-auto py-20 mobile-md:px-4 ">
                 <div className="flex justify-center gap-5 xl:gap-14 flex-wrap">
                     {news.map(({title, author, url, urlToImage}:ItemProps, i:number) => (

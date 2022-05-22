@@ -4,14 +4,14 @@ export interface loginState {
     email: string;
     password: string;
     passwordConfirm: string;
-    currentUser: string;
+    currentUser: any;
 }
 
 const initialState: loginState = {
     email: '',
     password: '',
     passwordConfirm: '',
-    currentUser: ''
+    currentUser: {},
 }
 
 export const loginSlice = createSlice({

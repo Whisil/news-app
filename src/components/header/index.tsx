@@ -23,7 +23,7 @@ const Header = ({secondary, profileBtn, newsBtn}:HeaderProps) => {
                     {profileBtn ? 
                         <Link to={currentUser ? "/profile" : "/login"} className="block px-6 py-2 bg-blue text-white font-medium rounded-32 hover:scale-105 transition-scale duration-300">Profile</Link>
                     : newsBtn  ?
-                        <Link to="/news" className="block px-6 py-2 bg-blue text-white font-medium rounded-32 hover:scale-105 transition-scale duration-300">News</Link>
+                        <Link to="/" className="block px-6 py-2 bg-blue text-white font-medium rounded-32 hover:scale-105 transition-scale duration-300">News</Link>
                     : null}
                 </div>
             }
